@@ -82,6 +82,10 @@
         const playList = $('.playlist')
 
         const app = {
+            currentIndex: 0,
+            isPlaying: false,
+            isRandom: false,
+            isRepeat: false,
             songs: [
                 {
                     name: 'Người Kế Nhiệm',
@@ -129,21 +133,59 @@
 
             // Render playlist
             render: function () {
+<<<<<<< HEAD
+                const htmls = this.songs.map((song, index) => {
+                    return `
+                        <div class="song ${index === this.currentIndex ? 'active' : ''}" data-index="${index}">
+                            <div class="thumb" style="background-image: url('${song.image}')">
+                            </div>
+                            <div class="body">
+                                <h3 class="title">${song.name}</h3>
+                                <p class="author">${song.singer}</p>
+                            </div>
+                            <div class="option">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </div>
+                        </div>
+                    `
+                })
+                playList.innerHTML = htmls.join('')
+=======
 
+>>>>>>> b9b9e5c5ce7e819808a66d5b26e7865c45ab5006
             },
 
             // Định nghĩa các thuốc tính cho object
             defineProperties: function () {
+<<<<<<< HEAD
+                Object.defineProperty(this, 'currentSong', {
+                    get: function () {
+                        return this.songs[this.currentIndex]
+                    }
+                })
+=======
 
+>>>>>>> b9b9e5c5ce7e819808a66d5b26e7865c45ab5006
             },
 
             // Lắng nghe / xử lý các sự kiện (DOM events)
             handleEvents: function () {
                 const _this = this
                 const cdwidth = cd.offsetWidth
+<<<<<<< HEAD
+=======
 
                 // Xử lý CD quay / dừng
+>>>>>>> b9b9e5c5ce7e819808a66d5b26e7865c45ab5006
 
+                // Xử lý CD quay / dừng
+                const cdThumbAnimate = cdThumb.animate([
+                    { transform: 'rotate(360deg)' }
+                ], {
+                    duration: 10000, //10 seconds
+                    iterations: Infinity
+                })
+                cdThumbAnimate.pause()
 
                 // Xử lý phóng to / thu nhỏ CD
 
@@ -246,9 +288,13 @@
 
             // Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
             loadCurrentSong: function () {
+<<<<<<< HEAD
                 heading.textContent = this.currentSong.name
                 cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`
                 audio.src = this.currentSong.path
+=======
+
+>>>>>>> 07cc38b27b8c64bfd217144f5b4a60d9d5e1af00
             },
 
             start: function () {

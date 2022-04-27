@@ -194,11 +194,7 @@
 
                 // Khi song được play
 
-                audio.onplay = function () {
-                    _this.isPlaying = true
-                    player.classList.add('playing')
-                    cdThumbAnimate.play()
-                }
+
                 // Khi song bị pause
 
                 audio.onpause = function () {
@@ -208,13 +204,13 @@
                 }
 
                 // khi tiến độ bài hát thay đổi
-
                 audio.ontimeupdate = function () {
                     if (audio.duration) {
                         const progressPercent = Math.floor(audio.currentTime / audio.duration * 100)
                         progress.value = progressPercent
                     }
                 }
+
                 // Xử lý khi tua song
                 progress.onchange = function (e) {
                     const seekTime = audio.duration / 100 * e.target.value
@@ -222,7 +218,6 @@
                 }
 
                 // khi next song 
-
                 nextBtn.onclick = function () {
                     if (_this.isRandom) {
                         _this.playRandomSong()
@@ -233,6 +228,7 @@
                     _this.render()
                     _this.scrollToActiveSong()
                 }
+                
                 // khi prev song 
                 prevBtn.onclick = function () {
                     if (_this.isRandom) {

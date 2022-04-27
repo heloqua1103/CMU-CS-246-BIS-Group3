@@ -133,6 +133,7 @@
 
             // Render playlist
             render: function () {
+<<<<<<< HEAD
                 const htmls = this.songs.map((song, index) => {
                     return `
                         <div class="song ${index === this.currentIndex ? 'active' : ''}" data-index="${index}">
@@ -149,21 +150,33 @@
                     `
                 })
                 playList.innerHTML = htmls.join('')
+=======
+
+>>>>>>> b9b9e5c5ce7e819808a66d5b26e7865c45ab5006
             },
 
             // Định nghĩa các thuốc tính cho object
             defineProperties: function () {
+<<<<<<< HEAD
                 Object.defineProperty(this, 'currentSong', {
                     get: function () {
                         return this.songs[this.currentIndex]
                     }
                 })
+=======
+
+>>>>>>> b9b9e5c5ce7e819808a66d5b26e7865c45ab5006
             },
 
             // Lắng nghe / xử lý các sự kiện (DOM events)
             handleEvents: function () {
                 const _this = this
                 const cdwidth = cd.offsetWidth
+<<<<<<< HEAD
+=======
+
+                // Xử lý CD quay / dừng
+>>>>>>> b9b9e5c5ce7e819808a66d5b26e7865c45ab5006
 
                 // Xử lý CD quay / dừng
                 const cdThumbAnimate = cdThumb.animate([
@@ -205,7 +218,13 @@
 
 
                 // Xử lý next song khi audio ended
-
+                audio.onended = function () {
+                    if (_this.isRepeat) {
+                        audio.play()
+                    } else {
+                        nextBtn.click()
+                    }
+                }
 
                 // Lắng nghe hành vi click vào playlist
 

@@ -83,7 +83,7 @@
 
         const app = {
             songs: [
-            {
+                {
                     name: 'Người Kế Nhiệm',
                     singer: 'Nhậm Nhiên',
                     path: './assets/music/NguoiKeNhiem.mp3',
@@ -128,20 +128,20 @@
             ],
 
             // Render playlist
-            render: function() { 
+            render: function () {
 
             },
 
             // Định nghĩa các thuốc tính cho object
-            defineProperties: function() {
+            defineProperties: function () {
 
             },
 
             // Lắng nghe / xử lý các sự kiện (DOM events)
-            handleEvents: function() {
+            handleEvents: function () {
                 const _this = this
                 const cdwidth = cd.offsetWidth
-                
+
                 // Xử lý CD quay / dừng
 
 
@@ -176,7 +176,13 @@
 
 
                 // Xử lý next song khi audio ended
-
+                audio.onended = function () {
+                    if (_this.isRepeat) {
+                        audio.play()
+                    } else {
+                        nextBtn.click()
+                    }
+                }
 
                 // Lắng nghe hành vi click vào playlist
 

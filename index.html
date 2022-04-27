@@ -133,7 +133,6 @@
 
             // Render playlist
             render: function () {
-<<<<<<< HEAD
                 const htmls = this.songs.map((song, index) => {
                     return `
                         <div class="song ${index === this.currentIndex ? 'active' : ''}" data-index="${index}">
@@ -150,33 +149,21 @@
                     `
                 })
                 playList.innerHTML = htmls.join('')
-=======
-
->>>>>>> b9b9e5c5ce7e819808a66d5b26e7865c45ab5006
             },
 
             // Định nghĩa các thuốc tính cho object
             defineProperties: function () {
-<<<<<<< HEAD
                 Object.defineProperty(this, 'currentSong', {
                     get: function () {
                         return this.songs[this.currentIndex]
                     }
                 })
-=======
-
->>>>>>> b9b9e5c5ce7e819808a66d5b26e7865c45ab5006
             },
 
             // Lắng nghe / xử lý các sự kiện (DOM events)
             handleEvents: function () {
                 const _this = this
                 const cdwidth = cd.offsetWidth
-<<<<<<< HEAD
-=======
-
-                // Xử lý CD quay / dừng
->>>>>>> b9b9e5c5ce7e819808a66d5b26e7865c45ab5006
 
                 // Xử lý CD quay / dừng
                 const cdThumbAnimate = cdThumb.animate([
@@ -188,14 +175,30 @@
                 cdThumbAnimate.pause()
 
                 // Xử lý phóng to / thu nhỏ CD
+                document.onscroll = function () {
+                    const scrollTop = window.scrollY || document.documentElement.scrollTop
+                    const newCdWidth = cdwidth - scrollTop
 
+                    cd.style.width = newCdWidth > 0 ? newCdWidth + "px" : 0
+                    cd.style.opacity = newCdWidth / cdwidth
+                }
 
                 // Xử lý khi click play
-
+                playBtn.onclick = function () {
+                    if (_this.isPlaying) {
+                        audio.pause()
+                    } else {
+                        audio.play()
+                    }
+                }
 
                 // Khi song được play
 
-
+                audio.onplay = function () {
+                    _this.isPlaying = true
+                    player.classList.add('playing')
+                    cdThumbAnimate.play()
+                }
                 // Khi song bị pause
 
                 audio.onpause = function () {
@@ -288,13 +291,9 @@
 
             // Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
             loadCurrentSong: function () {
-<<<<<<< HEAD
                 heading.textContent = this.currentSong.name
                 cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`
                 audio.src = this.currentSong.path
-=======
-
->>>>>>> 07cc38b27b8c64bfd217144f5b4a60d9d5e1af00
             },
 
             start: function () {

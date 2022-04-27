@@ -193,7 +193,11 @@
                 }
 
                 // Khi song được play
-
+                audio.onplay = function () {
+                    _this.isPlaying = true
+                    player.classList.add('playing')
+                    cdThumbAnimate.play()
+                }
 
                 // Khi song bị pause
 
